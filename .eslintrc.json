@@ -1,0 +1,34 @@
+{
+  "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/airbnb",
+      "@vue/typescript/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020
+    },
+    "rules": {
+      "no-underscore-dangle": 0,
+      "no-restricted-syntax": 0,
+      "no-param-reassign": 0,
+      "semi": 0,
+      "@typescript-eslint/semi": ["error"],
+      "no-shadow": 0,
+      "@typescript-eslint/no-shadow": ["error"]
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "mocha": true
+        }
+      }
+    ]
+}
