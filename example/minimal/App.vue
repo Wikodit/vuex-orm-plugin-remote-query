@@ -1,28 +1,32 @@
 <template>
   <div id="app">
-    <div v-if="isFetching">Loading...</div>
-    <ul v-if="!isLoading">
-      <li v-for="item in posts" :key="item.id">
-        {{ item.title}}
-      </li>
-    </ul>
+    <button @click="toggle">Toggle</button>
+    <Sub v-if="isOn" />
+    <button @click="toggle2">Toggle</button>
+    <SubVCC v-if="isOn2" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { Post } from './models';
+import Sub from './Sub.vue';
+import SubVCC from './SubVCC.vue';
 
 export default Vue.extend({
+  components: { Sub, SubVCC },
   data() {
     return {
-      posts: [] as Post[],
-      isLoading: false,
-      isFetching: false,
+      isOn: true,
+      isOn2: true,
     };
   },
-  async mounted() {
-    this.posts = await Post.fetchAll();
+  methods: {
+    toggle() {
+      this.isOn = !this.isOn;
+    },
+    toggle2() {
+      this.isOn2 = !this.isOn2;
+    },
   },
 });
 </script>
